@@ -1,0 +1,93 @@
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+body {
+    text-align: center;
+    margin-top: 1rem;
+}
+h1 {
+    font-size: 3rem;
+    margin: 1rem;
+}
+#btn {
+    padding: .8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border-style: none;
+    background: #059862;
+    color: white;
+    cursor: pointer;
+}
+#btn:hover{
+    background: #05b977;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /*the scale(0) will hide the modal by default*/
+    transform: translate(-50%, -50%) scale(0); 
+    /*we use transform scale instead of display show and none so we can add transition upon close and open of the modal*/
+    transition: 200ms ease-in-out;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 50%;
+    height: minmax(40%, auto); /* auto adjust container dependin on the content*/
+    z-index: 10;
+    background: white;
+    text-align: left;
+    
+    
+}
+.modal-container.active{
+    /*the scale(1) will show the modal upon creation of class .active for modal-container*/
+    transform: translate(-50%, -50%) scale(1); 
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid #000;
+}
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.close-btn {
+    padding: 2px 5px;
+    cursor: pointer;
+    border: none;
+    background: white;
+    font-size: 1.25rem;
+}
+.close-btn:hover{
+    color: red;
+}
+.modal {
+    padding: 10px 15px;
+}
+
+#overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    /*this will disable the events behind the modal upon creation of class active for overlay means we are not able to click bottons behind the overlay*/
+    pointer-events: none; 
+    transition: 200ms ease-in-out;
+    opacity: 0;
+}
+#overlay.active {
+    /*enable events capture when modal is active so that we will be able to click this overlay to maybe exit the modal*/
+    pointer-events: all; 
+    opacity: 1;
+}
+
+
